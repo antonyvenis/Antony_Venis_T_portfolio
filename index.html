@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- main css -->
-    <link  rel="stylesheet" href="my portfolio.css">
+    <link  rel="stylesheet" href="./style.css">
     <!-- fontawesome css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -13,14 +13,14 @@
 <body>
     <header>
         <div class="profile">
-            <img src="antonyprofile.jpeg" alt="antony img">
+            <img src="../antony_venis_portfolio/images/antonyprofile.jpeg" alt="antony img">
             <h1>ANTONY VENIS</h1>
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/antony-venis-t-30353529a" target="blank"><i class="fa-brands fa-linkedin"></i></a>
                 <a href="#" target="blank"><i class="fa-brands fa-facebook"></i></a>
                 <a href="https://wa.me/9751729345" target="blank"><i class="fa-brands fa-whatsapp"></i></a>
                 <a href="#" target="blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" target="blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://github.com/antonyvenis" target="blank"><i class="fa-brands fa-github"></i></a>
             </div>
         </div>
 
@@ -50,7 +50,7 @@
             <div class="home-row">
                 <h1>Hi, this is <br>Antony Venis T<span>.</span></h1>
                 <p>I'm a <span id="auto-input"></span></p><br>
-                <a href="Antony Venis Resume.jpeg" download class="btn">Download Resume</a>
+                <a href="../antony_venis_portfolio/images/Antony_Venis_T_Resume.png" download class="btn">Download Resume</a>
             </div>
         </section>
     
@@ -59,14 +59,14 @@
     <section id="about">
         <h1 class="sub-heading">About Me</h1>
         <div class="divider"></div>
-        <p class="sub-para">Hi, I'm Antony Venis from Pallikaranai. I completed my B.Sc in Mathematics in 2025. I am a passionate and self-motivated individual aiming to build my career as a Python Full Stack Developer.
+        <p class="sub-para">Hi, I'm Antony Venis from chennai. I completed my B.Sc in Mathematics in 2025. I am a passionate and self-motivated individual aiming to build my career as a Python Full Stack Developer.
 I have completed a Python Full Stack Development course, where I gained knowledge in HTML, CSS, JavaScript, React, Python, Django, and Database technologies. I enjoy building web applications and solving real-time problems using technology.
 My mathematics background helped me develop strong logical thinking, analytical skills, and problem-solving ability, which support me in coding and application development. I am a quick learner and always interested in upgrading my skills according to industry trends.
 I believe in hard work, discipline, and continuous learning. My goal is to contribute to an organization with my technical skills while growing professionally as a developer.</p>
 
         <div class="about-col">
             <div class="img-col">
-                <img src="antony.about.img.jpeg" alt="">
+                <img src="../antony_venis_portfolio/images/antony.about.img.jpeg" alt="">
             </div>
             
             <div class="info-col">
@@ -131,7 +131,7 @@ I believe in hard work, discipline, and continuous learning. My goal is to contr
             </div>
             <div class="skill-box">
                 <div class="skill-info">
-                    <h2>HTML</h2>
+                    <h2>Bootstrap</h2>
                     <h2>99%</h2>
                 </div>
                 <div class="skill-outter-line">
@@ -140,7 +140,7 @@ I believe in hard work, discipline, and continuous learning. My goal is to contr
             </div>
             <div class="skill-box">
                 <div class="skill-info">
-                    <h2>Web Degigning</h2>
+                    <h2>Web Designing</h2>
                     <h2>95%</h2>
                 </div>
                 <div class="skill-outter-line">
@@ -291,11 +291,30 @@ My education has given me a strong foundation to start my career as a Python Ful
       
    <main>
 
-
     <!-- TYPED JS(for typing effect) -->
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <!-- MAIN JS -->
-    <script src="my portpolio.js"></script> 
+
+ <script>
+    
+    // Header Toggle
+let MenuBtn = document.getElementById('MenuBtn')
+
+MenuBtn.addEventListener('click', function(e){
+    document.querySelector('body').classList.toggle('mobile-nav-active');
+    this.classList.toggle('fa-xmark')
+})
+
+// Typing Effect
+let typed = new Typed('#auto-input',{
+    strings: ['Front-End Devoloper!','Web Designer!','Backend Developer','Web Developer'],
+    typeSpeed: 90,
+    backSpeed: 90,
+    backDelay: 100,
+    loop: true,
+})
+
+</script>
     
 </body>
 </html>
