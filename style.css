@@ -183,7 +183,7 @@ main {
 #home {
     height: 100vh;
     width: 100%;
-    background-image: url(../antony_venis_portfolio/images/antonyhomeimg.jpeg);
+    background-image: url(./images/antonyhomeimg.jpeg);
     background-size: cover;
     background-attachment: fixed;
     display: flex;
