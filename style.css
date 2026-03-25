@@ -271,9 +271,9 @@ main {
 }
 
 /* Mobile */
-@media (max-width: 768px) {
+@media (max-width: 350px) {
     body {
-        background-image: url('bg-mobile.jpg');
+        background-image: url('./images/antonyhomeimg.jpeg');
         background-position: center;
     }
 }
