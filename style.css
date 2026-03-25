@@ -192,6 +192,7 @@ main {
     justify-content: center;
     padding: 70px;
     position: relative;
+    flex-wrap: wrap;
 }
 
 /* Overlay */
