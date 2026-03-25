@@ -9,11 +9,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Antony Venis Portfolio</title>
+
 </head>
+
+<meta name="description" content="Antony Venis - Python Full Stack Developer Portfolio, Software Developer Portfolio. Skilled in HTML, CSS, JS, React, Django.">
+<meta name="keywords" content="Antony Venis, Python Developer, Full Stack Developer, Chennai Developer, Software Developer">
+<meta name="author" content="Antony Venis">
+
+<title>Antony Venis | Full Stack Developer</title>
+
 <body>
     <header>
         <div class="profile">
-            <img src="./images/antonyprofile.jpeg" alt="antony img">
+            <img src="./images/antonyprofile.jpeg" loading="lazy" alt="antony img">
             <h1>ANTONY VENIS</h1>
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/antony-venis-t-30353529a" target="blank"><i class="fa-brands fa-linkedin"></i></a>
@@ -28,10 +36,12 @@
          <nav>
             <ul>
                 <li><a href="#" class="active"><i class="fa-solid fa-house"></i> Home</a></li><hr><br>
-                <li><a href="#about"><i class="fa-solid fa-circle-user"></i>About</a></li><hr><br>
+                <li><a href="#about"><i class="fa-solid fa-circle-user"></i> About</a></li><hr><br>
                 <li><a href="#skill"><i class="fa-sharp fa-solid fa-book-open"></i> Skills</a></li><hr><br>
                 <li><a href="#education"><i class="fa-duotone fa-solid fa-graduation-cap"></i> Education</a></li><hr><br>
+                <li><a href="#projects"><i class="fa-solid fa-briefcase"></i> Projects</a></li><hr><br>
                 <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li><hr><br>
+                <li><a href="#"><i class=""></i></a></li><hr><br>
             </ul>
          </nav>
 
@@ -49,7 +59,9 @@
         <section id="home">
             <div class="home-row">
                 <h1>Hi, this is <br>Antony Venis T<span>.</span></h1>
+                <h4 style="color: aqua">Open to Work!</h4><br>
                 <p>I'm a <span id="auto-input"></span></p><br>
+                <!-- <h4 style="color: aqua">Open to Work!</h4> -->
                 <a href="./images/Antony_Venis_T_Resume.png" download class="btn">Download Resume</a>
             </div>
         </section>
@@ -59,14 +71,14 @@
     <section id="about">
         <h1 class="sub-heading">About Me</h1>
         <div class="divider"></div>
-        <p class="sub-para">Hi, I'm Antony Venis from chennai. I completed my B.Sc in Mathematics in 2025. I am a passionate and self-motivated individual aiming to build my career as a Python Full Stack Developer.
+        <p class="sub-para"><p><strong>Currently seeking opportunities as a Software Developer.</strong></p>Hi, I'm Antony Venis from chennai. I completed my B.Sc in Mathematics in 2025. I am a passionate and self-motivated individual aiming to build my career as a Python Full Stack Developer.
 I have completed a Python Full Stack Development course, where I gained knowledge in HTML, CSS, JavaScript, React, Python, Django, and Database technologies. I enjoy building web applications and solving real-time problems using technology.
 My mathematics background helped me develop strong logical thinking, analytical skills, and problem-solving ability, which support me in coding and application development. I am a quick learner and always interested in upgrading my skills according to industry trends.
 I believe in hard work, discipline, and continuous learning. My goal is to contribute to an organization with my technical skills while growing professionally as a developer.</p>
 
         <div class="about-col">
             <div class="img-col">
-                <img src="./images/antony.about.img.jpeg" alt="">
+                <img src="./images/antony.about.img.jpeg" loading="lazy" alt="">
             </div>
             
             <div class="info-col">
@@ -229,6 +241,36 @@ My education has given me a strong foundation to start my career as a Python Ful
     </section>
 
 
+<!----------------------------- Project Section ---------------------------------------------------------------->
+
+    <section id="projects">
+    <h1 class="sub-heading">Projects</h1>
+    <div class="divider"></div>
+
+    <div class="project-row">
+
+        <div class="project-card">
+            <h2>Portfolio Website</h2>
+            <p>Personal portfolio website using HTML, CSS, JavaScript.</p>
+            <a href="#" target="_blank">Live Demo</a>
+        </div>
+
+        <div class="project-card">
+            <h2>Student Management System</h2>
+            <p>CRUD app using Python & Django with database.</p>
+            <a href="#" target="_blank">View Project</a>
+        </div>
+
+        <div class="project-card">
+            <h2>Todo App</h2>
+            <p>Task management app using JavaScript.</p>
+            <a href="#" target="_blank">View Code</a>
+        </div>
+
+    </div>
+</section>
+
+
     <!------------- Contact Section --------------------------->
 
     <section id="contact">
@@ -253,7 +295,7 @@ My education has given me a strong foundation to start my career as a Python Ful
                     </div>
                     <div class="info">
                         <h4>Phone:</h4>
-                        <p>+91 9751729345</p>
+                        <p><a href="tel:9751729345" >+91 9751729345</a></p>
                     </div>
                 </div>
                   <div class="icon-box">
@@ -272,12 +314,12 @@ My education has given me a strong foundation to start my career as a Python Ful
             </div>
 
             <div class="contact-right">
-                <form action="mailto:antonyvenis1212@gmail.com">
-                    <input type="text" name="name" id="name" placeholder="Your Name"> 
-                    <input type="email" name="email" id="email" placeholder="Your Email"> 
-                    <input type="text" name="subject" id="subject" placeholder="Your Subject">
-                    <textarea type="msg" id="msg" rows="9" placeholder="Your Message"></textarea>
-                    <input type="submit" value="Send Message">
+                <form action="mailto:antonyvenis1212@gmail.com" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required> 
+                    <input type="email" name="email" placeholder="Your Email" required> 
+                    <input type="text" name="subject" placeholder="Subject">
+                    <textarea name="message" rows="6" placeholder="Message" required></textarea>
+                    <input type="submit" value="Send Message" >
                 </form>
             </div>
         </div>
@@ -307,7 +349,7 @@ MenuBtn.addEventListener('click', function(e){
 
 // Typing Effect
 let typed = new Typed('#auto-input',{
-    strings: ['Front-End Devoloper!','Web Designer!','Backend Developer','Web Developer'],
+    strings: ['Building scalable web apps with python & React!','Web Designer!','Backend Developer','Software Developer'],
     typeSpeed: 90,
     backSpeed: 90,
     backDelay: 100,
@@ -315,6 +357,15 @@ let typed = new Typed('#auto-input',{
 })
 
 </script>
-    
+
+<script>
+window.addEventListener("load", () => {
+    document.querySelectorAll(".skill-inner-line").forEach(el => {
+        el.style.width = el.getAttribute("style").replace("width:", "");
+    });
+});
+</script>
+
+
 </body>
 </html>
