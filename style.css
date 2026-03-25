@@ -902,12 +902,12 @@ section {
 @media (max-width: 412px) {
 
     /* Fix header width */
-    header {
+    /* header {
         width: 260px;
     }
     .footer {
         width: 260px;
-    }
+    } */
 
     /* Fix text overflow */
     body {
