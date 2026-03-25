@@ -270,22 +270,11 @@ main {
     }
 }
 
-/* Mobile View */
-@media only screen and (max-width: 450px) {
-    #home {
-        padding: 30px;
-    }
-    #home .home-row h1 {
-        font-size: 35px;
-        letter-spacing: 0;
-        line-height: 50px;
-    }
-    #home .home-row h1 br {
-        display: none;
-    }
-    #home .home-row p {
-        font-size: 20px;
-        font-weight: 400;
+/* Mobile */
+@media (max-width: 768px) {
+    body {
+        background-image: url('bg-mobile.jpg');
+        background-position: center;
     }
 }
 
@@ -901,26 +890,7 @@ section {
     color: #fff;
 }
 
-@media only screen and (max-width: 500px) {
-    #home {
-    height: 100vh;
-    width: 100%;
-    background-image: url(./images/antonyhomeimg.jpeg);
-    background-size: cover;
-    background-attachment: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 70px;
-    position: relative;
-}
-} 
 
-@media only screen and (max-width: 500px) {
-    #home background-image {
-        width: 100px;
-}
-} 
 
 
 
