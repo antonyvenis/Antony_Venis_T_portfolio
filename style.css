@@ -905,6 +905,9 @@ section {
     header {
         width: 260px;
     }
+    .footer {
+        width: 260px;
+    }
 
     /* Fix text overflow */
     body {
