@@ -251,6 +251,12 @@ main {
     box-shadow: none;
 }
 
+#home {
+    background-size: cover;
+    /* background-position: center; */
+    background-repeat: no-repeat;
+}
+
 /* Mobile View */
 @media only screen and (max-width: 670px) {
     #home {
@@ -271,10 +277,11 @@ main {
 }
 
 /* Mobile */
-@media (max-width: 350px) {
-    body {
+@media (max-width: 412px) {
+    #home {
         background-image: url('./images/antonyhomeimg.jpeg');
         background-position: center;
+        background-attachment: scroll;
     }
 }
 
@@ -888,6 +895,74 @@ section {
 #contact-about-tel a {
     text-decoration: none;
     color: #fff;
+}
+
+
+
+@media (max-width: 412px) {
+
+    /* Fix header width */
+    header {
+        width: 260px;
+    }
+
+    /* Fix text overflow */
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Home section */
+    #home {
+        padding: 20px;
+        height: 100vh;
+    }
+
+    #home .home-row h1 {
+        font-size: 26px;
+        line-height: 36px;
+    }
+
+    #home .home-row p {
+        font-size: 16px;
+    }
+
+    /* Button fix */
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    /* About image */
+    #about .about-col .img-col img {
+        width: 80%;
+    }
+
+    /* Skills single column */
+    #skill .skill-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* Contact full width */
+    #contact .contact-left,
+    #contact .contact-right {
+        min-width: 100%;
+        flex-basis: 100%;
+    }
+
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn {
+    min-height: 44px;
+}
+
+#auto-input {
+    color: var(--theme-color);
+    font-weight: bold;
 }
 
 
