@@ -14,9 +14,9 @@
     <meta name="keywords" content="Antony Venis, Python Developer, Full Stack Developer, Chennai Developer, Software Developer">
     <meta name="author" content="Antony Venis">
 
-    <title>Antony Venis | Full Stack Developer</title>
+    <title>👑 ⚡Antony Venis ⚡| Full Stack Developer⚡</title>
 
-    <link rel="icon" href="./images/antony_portfolio_logo.jpeg" >
+    <!-- <link rel="icon" href="./images/antony_portfolio_logo.jpeg" > -->
 
 </head>
 
@@ -29,7 +29,7 @@
                 <a href="https://www.linkedin.com/in/antony-venis-t-30353529a" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
                 <a href="#" target="_blank"><i class="fa-brands fa-facebook"></i></a>
                 <a href="https://wa.me/9751729345" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.instagram.com/venis_king_143?igsh=MTdhdmR1dm52Y2p3bg==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://github.com/antonyvenis" target="_blank"><i class="fa-brands fa-github"></i></a>
             </div>
         </div>
@@ -49,7 +49,7 @@
 
          <!-- FOOTER -->
           <div class="footer">
-            <p>&copy; copyright 2026 <br>Designed by <a href="tel:9751729345">Antony!</a></p>
+            <p>&copy copyright 2026 <br>Designed by <a href="tel:9751729345">Antony!</a></p>
           </div>
     </header>
 
@@ -64,7 +64,7 @@
                 <h4 style="color: aqua">Open to Work!</h4><br>
                 <p>I'm a <span id="auto-input"></span></p><br>
                 <!-- <h4 style="color: aqua">Open to Work!</h4> -->
-                <a href="./images/Antony_Venis_T_Resume.png" download class="btn">Download Resume</a>
+                <a href="my portfolio\Antony_Venis_T_Resume.pdf" download class="btn">Download Resume</a>
             </div>
         </section>
     
@@ -348,6 +348,15 @@ MenuBtn.addEventListener('click', function(e){
     document.querySelector('body').classList.toggle('mobile-nav-active');
     this.classList.toggle('fa-xmark')
 })
+// Close menu when nav link clicked
+document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.body.classList.remove('mobile-nav-active');
+        MenuBtn.classList.remove('fa-xmark');
+    });
+});
+
+
 
 // Typing Effect
 let typed = new Typed('#auto-input',{
