@@ -4,7 +4,7 @@
 
 # ⚡ Antony Venis T ⚡
 
-### Python Full Stack Developer | React Developer | Django Developer
+### Python Full Stack Developer | React & Django Developer | SoftWare Developer
 
 🚀 Passionate about building modern, responsive and scalable web applications.
 
