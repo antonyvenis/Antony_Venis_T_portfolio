@@ -1,10 +1,12 @@
+<div align="center">
 # 👑 Antony Venis Portfolio
+</div>
 
 <div align="center">
 
 # ⚡ Antony Venis T ⚡
 
-### Python Full Stack Developer | React & Django Developer | SoftWare Developer
+### Python Full Stack Developer | React & Django Developer | SoftWare & Web Developer
 
 🚀 Passionate about building modern, responsive and scalable web applications.
 
@@ -119,7 +121,7 @@ CRUD application built with Django and Database integration.
 Add your screenshot here:
 
 ```md
-![Portfolio Screenshot](./images/portfolio-preview.png)
+![Portfolio Screenshot](my portfolio\antony_venis_portfolio\images\portfolio_image.png)
 ```
 
 ---
