@@ -185,14 +185,18 @@ main {
     height: 100vh;
     width: 100%;
     background-image: url(./images/antonyhomeimg2.png);
-    background-size: cover;
+    /* background-size: cover;
     background-attachment: fixed;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 70px;
     position: relative;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
+    background-size:contain;
+    background-position:right center;
+    background-repeat:no-repeat;
+    background-color:#0e1722;
 }
 
 /* Overlay */
