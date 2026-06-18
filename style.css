@@ -182,8 +182,8 @@ main {
 }
 
 #home {
-    height: 100vh;
-    width: 100%;
+    /* height: 100vh;
+    width: 100%; */
     background-image: url(./images/antonyhomeimg2.png);
     /* background-size: cover;
     background-attachment: fixed;
@@ -194,7 +194,7 @@ main {
     position: relative;
     flex-wrap: wrap; */
     background-size:contain;
-    background-position:right center;
+    background-position:right top;
     background-repeat:no-repeat;
     background-color:#0e1722;
 }
@@ -971,6 +971,36 @@ img {
 #auto-input {
     color: var(--theme-color);
     font-weight: bold;
+}
+
+@media (max-width: 768px){
+
+    #home{
+        padding: 20px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #home .home-row{
+        width: 100%;
+        text-align: center;
+    }
+
+    #home .home-row h1{
+        font-size: 38px;
+        line-height: 48px;
+    }
+
+    #home .home-row p{
+        font-size: 20px;
+    }
+
+    #home .btn{
+        margin: 25px auto;
+        display: block;
+        width: fit-content;
+    }
 }
 
 
