@@ -972,28 +972,31 @@ img {
     color: var(--theme-color);
     font-weight: bold;
 }
-
 @media (max-width: 768px){
 
     #home{
-        padding: 20px;
-        text-align: center;
-        align-items: center;
+        display: flex;
         justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
     }
 
     #home .home-row{
         width: 100%;
+        margin: 0 auto;
         text-align: center;
     }
 
     #home .home-row h1{
         font-size: 38px;
         line-height: 48px;
+        text-align: center;
     }
 
     #home .home-row p{
         font-size: 20px;
+        text-align: center;
     }
 
     #home .btn{
