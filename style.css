@@ -280,7 +280,7 @@ main {
 /* Mobile */
 @media (max-width: 412px) {
     #home {
-        background-image: url('./images/antonyhomeimg.jpeg');
+        background-image: url('./images/antonyhomeimg2.png');
         background-position: center;
         background-attachment: scroll;
     }
