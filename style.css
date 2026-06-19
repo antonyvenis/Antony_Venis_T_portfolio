@@ -1015,7 +1015,7 @@ header{
     top: 0;
     left: 0;
     width: 300px;
-    height: 50vh;
+    height: 100vh;
     background: #04182c;
     z-index: 999;
     overflow-y: auto;
