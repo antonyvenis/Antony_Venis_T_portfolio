@@ -41,7 +41,7 @@ https://antony-venis-t-portfolio.vercel.app/
 ## 📸 Portfolio Preview
 
 <p align="center">
-  <img src="./images/portfolio_image.png" alt="Portfolio Preview" width="100%">
+  <img src="./images/portfolio_image2.png" alt="Portfolio Preview" width="100%">
 </p>
 
 ---

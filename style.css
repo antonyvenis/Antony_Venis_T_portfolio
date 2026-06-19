@@ -1006,6 +1006,40 @@ img {
     }
 }
 
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    overflow-y: auto;
+    background: #04182c;
+    z-index: 999;
+}
+
+main{
+    margin-left: 300px;
+    width: calc(100% - 300px);
+}
+
+nav ul{
+    padding-bottom: 20px;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+}
+
+nav{
+    flex: 1;
+}
+
+.footer{
+    margin-top: auto;
+    text-align: center;
+    padding: 15px;
+}
 
 
 
