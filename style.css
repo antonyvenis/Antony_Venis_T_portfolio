@@ -1067,3 +1067,8 @@ img {
 .project-btn:hover{
     transform: translateY(-3px);
 }
+
+.skill-box {
+    gap: 10px;
+    display: flex;
+}
