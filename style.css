@@ -1068,7 +1068,7 @@ img {
     transform: translateY(-3px);
 }
 
-.skill-box {
+.skill-info {
     gap: 10px;
     display: flex;
 }
