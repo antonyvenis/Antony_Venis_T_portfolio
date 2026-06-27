@@ -1068,7 +1068,3 @@ img {
     transform: translateY(-3px);
 }
 
-.skill-info {
-    gap: 10px;
-    display: flex;
-}
