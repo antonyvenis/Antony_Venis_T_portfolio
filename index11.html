@@ -300,166 +300,284 @@
         .home-content { max-width: 600px; }
 
         /* ---- HERO IMAGE AREA ---- */
+        /* ══════════════════════════════════════════
+           HOME IMAGE — CINEMATIC PREMIUM v4
+        ══════════════════════════════════════════ */
         .home-img-wrap {
             position: relative;
-            width: 340px;
-            height: 340px;
+            width: 380px;
+            height: 460px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
+            perspective: 1000px;
         }
 
-        /* Outer slow-spin dashed ring */
-        .home-img-wrap .ring-outer {
-            position: absolute;
-            inset: -22px;
-            border-radius: 50%;
-            border: 1.5px dashed rgba(108,99,255,0.35);
-            animation: spinRing 22s linear infinite;
-        }
-        /* Inner counter-spin ring */
-        .home-img-wrap .ring-inner {
-            position: absolute;
-            inset: -6px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            border-top-color: var(--accent);
-            border-right-color: var(--accent2);
-            animation: spinRing 6s linear infinite reverse;
-        }
-        @keyframes spinRing { to { transform: rotate(360deg); } }
+        /* 3D tilt card that wraps the photo */
+        .img-tilt-card {
+            position: relative;
+            width: 320px;
+            height: 380px;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            padding-top: 28px;
+            gap: 0;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease;
+            z-index: 2;
 
-        /* Purple-cyan glow behind photo */
-        .home-img-wrap .img-glow {
-            position: absolute;
-            inset: 10px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(108,99,255,0.45) 0%, rgba(0,212,255,0.2) 50%, transparent 75%);
-            filter: blur(22px);
-            z-index: 0;
-            animation: glowPulse 4s ease-in-out infinite;
-        }
-        @keyframes glowPulse {
-            0%,100% { opacity: 0.7; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.06); }
+            /* Glassmorphism */
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(108,99,255,0.2);
+            box-shadow:
+                0 25px 60px rgba(0,0,0,0.5),
+                inset 0 1px 0 rgba(255,255,255,0.07),
+                0 0 0 1px rgba(108,99,255,0.08);
         }
 
-        /* The photo itself */
-        .home-img-wrap img {
-            width: 300px; height: 300px;
+        /* Animated gradient border on the card */
+        .img-tilt-card::before {
+            content: '';
+            position: absolute;
+            inset: -1.5px;
+            border-radius: 29px;
+            background: conic-gradient(
+                from var(--card-angle, 0deg),
+                #6c63ff 0%,
+                #00d4ff 25%,
+                #ff6b6b 50%,
+                #a78bfa 75%,
+                #6c63ff 100%
+            );
+            z-index: -1;
+            animation: rotateBorder 5s linear infinite;
+            opacity: 0.7;
+        }
+        @property --card-angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
+        @keyframes rotateBorder {
+            to { --card-angle: 360deg; }
+        }
+
+        /* Scanline shimmer on hover */
+        .img-tilt-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 28px;
+            background: linear-gradient(
+                105deg,
+                transparent 40%,
+                rgba(255,255,255,0.04) 50%,
+                transparent 60%
+            );
+            background-size: 200% 100%;
+            animation: scanline 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes scanline {
+            0%,100% { background-position: -100% 0; }
+            50%      { background-position: 200% 0; }
+        }
+
+        /* Photo circle inside card */
+        .img-photo-circle {
+            position: relative;
+            width: 210px; height: 210px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Photo glow ring */
+        .img-photo-circle::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border-radius: 50%;
+            background: radial-gradient(circle,
+                rgba(108,99,255,0.55) 0%,
+                rgba(0,212,255,0.25) 50%,
+                transparent 70%);
+            filter: blur(16px);
+            animation: photoGlow 3.5s ease-in-out infinite;
+        }
+        @keyframes photoGlow {
+            0%,100% { opacity: 0.6; transform: scale(1); }
+            50%      { opacity: 1;   transform: scale(1.1); }
+        }
+
+        /* Photo canvas arc */
+        .img-photo-circle canvas {
+            position: absolute;
+            inset: -12px;
+            width: calc(100% + 24px);
+            height: calc(100% + 24px);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .img-photo-circle img {
+            width: 210px; height: 210px;
             border-radius: 50%;
             object-fit: cover;
             object-position: top center;
-            border: 3px solid rgba(108,99,255,0.6);
             position: relative;
             z-index: 1;
             box-shadow:
-                0 0 0 6px rgba(108,99,255,0.1),
-                0 0 50px rgba(108,99,255,0.3),
-                0 20px 60px rgba(0,0,0,0.5);
-            transition: transform 0.4s ease;
+                0 0 0 3px rgba(108,99,255,0.3),
+                0 12px 40px rgba(0,0,0,0.5);
+            transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
         }
-        .home-img-wrap:hover img {
-            transform: scale(1.03);
+        .img-tilt-card:hover .img-photo-circle img {
+            transform: scale(1.04);
         }
 
-        /* Orbiting tech icon dots */
-        .orbit-icons {
-            position: absolute;
-            inset: -50px;
-            animation: spinRing 20s linear infinite;
+        /* Name + title inside card */
+        .img-card-info {
+            margin-top: 18px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
         }
-        .orbit-icon {
-            position: absolute;
-            width: 42px; height: 42px;
-            border-radius: 50%;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            display: flex; align-items: center; justify-content: center;
+        .img-card-info h3 {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.1rem;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-            /* counter-rotate so icons stay upright */
-            animation: counterSpin 20s linear infinite;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 40%, var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4px;
         }
-        @keyframes counterSpin { to { transform: rotate(-360deg); } }
+        .img-card-info p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
 
-        /* Place 6 icons evenly on the orbit circle */
-        .orbit-icon:nth-child(1) { top: 0;    left: 50%; transform: translate(-50%, -50%) rotate(0deg); }
-        .orbit-icon:nth-child(2) { top: 13%;  right: 4%; }
-        .orbit-icon:nth-child(3) { bottom: 13%; right: 4%; }
-        .orbit-icon:nth-child(4) { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
-        .orbit-icon:nth-child(5) { bottom: 13%; left: 4%; }
-        .orbit-icon:nth-child(6) { top: 13%;  left: 4%; }
-
-        /* Floating info badges */
-        .home-float-badge {
+        /* Status bar inside card */
+        .img-status-bar {
             position: absolute;
-            background: rgba(20,27,45,0.92);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--card-border);
-            border-radius: 14px;
-            padding: 10px 16px;
+            bottom: 22px;
+            left: 24px; right: 24px;
             display: flex;
             align-items: center;
-            gap: 9px;
+            justify-content: space-between;
+            padding: 10px 16px;
+            background: rgba(108,99,255,0.1);
+            border: 1px solid rgba(108,99,255,0.2);
+            border-radius: 12px;
+            z-index: 2;
+        }
+        .status-available {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.76rem;
+            font-weight: 600;
+            color: #4ade80;
+        }
+        .status-dot-green {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 8px #22c55e;
+            animation: statusBlink 2s ease-in-out infinite;
+        }
+        @keyframes statusBlink {
+            0%,100% { opacity: 1; box-shadow: 0 0 8px #22c55e; }
+            50%      { opacity: 0.5; box-shadow: 0 0 4px #22c55e; }
+        }
+        .status-location {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Floating badges OUTSIDE card */
+        .home-float-badge {
+            position: absolute;
+            background: rgba(10,15,30,0.88);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(108,99,255,0.3);
+            border-radius: 16px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 0.8rem;
             font-weight: 600;
             color: var(--text);
-            z-index: 3;
+            z-index: 5;
             white-space: nowrap;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+            box-shadow:
+                0 8px 30px rgba(0,0,0,0.45),
+                inset 0 1px 0 rgba(255,255,255,0.06);
         }
         .home-float-badge.badge-1 {
-            top: -10px; left: -50px;
-            animation: floatBadge 3.5s ease-in-out infinite;
+            top: 20px; left: -10px;
+            animation: badgeFloat1 4s ease-in-out infinite;
         }
         .home-float-badge.badge-2 {
-            bottom: 10px; right: -50px;
-            animation: floatBadge 3.5s ease-in-out infinite;
-            animation-delay: 1.75s;
+            top: 130px; right: -20px;
+            animation: badgeFloat2 4s ease-in-out infinite;
+            animation-delay: 1.3s;
         }
         .home-float-badge.badge-3 {
-            top: 50%; left: -65px;
-            transform: translateY(-50%);
-            animation: floatBadge 4s ease-in-out infinite;
-            animation-delay: 0.8s;
+            top: 250px; left: -20px;
+            animation: badgeFloat1 4s ease-in-out infinite;
+            animation-delay: 2.5s;
         }
-        @keyframes floatBadge {
-            0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        @keyframes badgeFloat1 {
+            0%,100% { transform: translateX(0) translateY(0); }
+            33%      { transform: translateX(-5px) translateY(-6px); }
+            66%      { transform: translateX(3px) translateY(-3px); }
         }
-        .home-float-badge.badge-3 { animation-name: floatBadge3; }
-        @keyframes floatBadge3 {
-            0%,100% { transform: translateY(-50%) translateX(0); }
-            50% { transform: translateY(-50%) translateX(-6px); }
+        @keyframes badgeFloat2 {
+            0%,100% { transform: translateX(0) translateY(0); }
+            33%      { transform: translateX(5px) translateY(-8px); }
+            66%      { transform: translateX(-3px) translateY(-4px); }
         }
         .home-float-badge .dot {
             width: 9px; height: 9px;
             border-radius: 50%;
             background: #22c55e;
+            box-shadow: 0 0 8px #22c55e;
             flex-shrink: 0;
-            box-shadow: 0 0 6px #22c55e;
         }
         .home-float-badge .badge-icon {
-            width: 26px; height: 26px;
-            border-radius: 6px;
+            width: 30px; height: 30px;
+            border-radius: 9px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
+            flex-shrink: 0;
         }
         .home-float-badge .badge-icon.purple { background: rgba(108,99,255,0.2); }
         .home-float-badge .badge-icon.cyan   { background: rgba(0,212,255,0.15); }
+        .home-float-badge .badge-text { display: flex; flex-direction: column; gap: 1px; }
+        .home-float-badge .badge-text .bt { font-size: 0.78rem; font-weight: 700; color: var(--text); }
+        .home-float-badge .badge-text .bs { font-size: 0.68rem; color: var(--text-muted); font-weight: 400; }
 
-        @media (max-width: 1200px) {
-            .home-inner { gap: 40px; }
-        }
+        /* Responsive */
+        @media (max-width: 1200px) { .home-inner { gap: 40px; } }
         @media (max-width: 1100px) {
             .home-inner { grid-template-columns: 1fr; justify-items: center; }
-            .home-img-wrap { order: -1; width: 260px; height: 260px; }
-            .home-img-wrap img { width: 220px; height: 220px; }
-            .home-float-badge.badge-1 { left: -20px; top: -20px; }
-            .home-float-badge.badge-2 { right: -20px; bottom: -10px; }
-            .home-float-badge.badge-3 { display: none; }
+            .home-img-wrap { order: -1; width: 300px; height: 380px; }
+            .img-tilt-card { width: 260px; height: 320px; }
+            .img-photo-circle, .img-photo-circle img { width: 170px; height: 170px; }
+            .home-float-badge.badge-1 { left: -5px; top: 10px; }
+            .home-float-badge.badge-2 { right: -10px; top: 100px; }
+            .home-float-badge.badge-3 { left: -5px; top: 200px; }
             .home-content { max-width: 100%; text-align: center; }
             .home-greeting { justify-content: center; }
             .btn-group { justify-content: center; }
@@ -1310,54 +1428,60 @@
                 </div>
             </div>
 
-            <!-- RIGHT: Hero image with orbit -->
-            <div class="home-img-wrap">
-                <!-- Rings -->
-                <div class="ring-outer"></div>
-                <div class="ring-inner"></div>
+            <!-- RIGHT: Hero image CINEMATIC v4 -->
+            <div class="home-img-wrap" id="heroImgWrap">
 
-                <!-- Glow -->
-                <div class="img-glow"></div>
-
-                <!-- Orbiting tech icons -->
-                <div class="orbit-icons">
-                    <div class="orbit-icon" style="top:0;left:50%;transform:translate(-50%,-50%)">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="22" height="22" alt="Python">
-                    </div>
-                    <div class="orbit-icon" style="top:13%;right:2%">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="22" height="22" alt="React">
-                    </div>
-                    <div class="orbit-icon" style="bottom:13%;right:2%">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="22" height="22" alt="JS">
-                    </div>
-                    <div class="orbit-icon" style="bottom:0;left:50%;transform:translate(-50%,50%)">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" width="22" height="22" alt="PG">
-                    </div>
-                    <div class="orbit-icon" style="bottom:13%;left:2%">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="22" height="22" alt="Git">
-                    </div>
-                    <div class="orbit-icon" style="top:13%;left:2%">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="22" height="22" alt="HTML">
-                    </div>
-                </div>
-
-                <!-- Photo -->
-                <img src="./images/antonyhomeimg2.png" loading="lazy" alt="Antony Venis T - Python Full Stack Developer">
-
-                <!-- Floating badges -->
+                <!-- Floating badges outside the card -->
                 <div class="home-float-badge badge-1">
                     <span class="dot"></span>
-                    Open to Work
+                    <div class="badge-text">
+                        <span class="bt">Available Now</span>
+                        <span class="bs">Open to Work</span>
+                    </div>
                 </div>
 
                 <div class="home-float-badge badge-2">
-                    <span class="badge-icon purple">💻</span>
-                    Software Developer
+                    <span class="badge-icon purple">🐍</span>
+                    <div class="badge-text">
+                        <span class="bt">Python · Django</span>
+                        <span class="bs">Backend Expert</span>
+                    </div>
                 </div>
 
                 <div class="home-float-badge badge-3">
-                    <span class="badge-icon cyan">📍</span>
-                    Chennai, India
+                    <span class="badge-icon cyan">⚛️</span>
+                    <div class="badge-text">
+                        <span class="bt">React · JS</span>
+                        <span class="bs">Frontend Dev</span>
+                    </div>
+                </div>
+
+                <!-- 3D Tilt Glassmorphism Card -->
+                <div class="img-tilt-card" id="tiltCard">
+
+                    <!-- Photo with canvas arc -->
+                    <div class="img-photo-circle">
+                        <canvas id="img-arc-canvas" width="234" height="234"></canvas>
+                        <img src="./images/antonyhomeimg2.png" loading="lazy" alt="Antony Venis T">
+                    </div>
+
+                    <!-- Name info inside card -->
+                    <div class="img-card-info">
+                        <h3>Antony Venis T</h3>
+                        <p>Python Full Stack Developer</p>
+                    </div>
+
+                    <!-- Status bar inside card -->
+                    <div class="img-status-bar">
+                        <div class="status-available">
+                            <span class="status-dot-green"></span>
+                            Available to hire
+                        </div>
+                        <div class="status-location">
+                            📍 Chennai, India
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -2036,7 +2160,7 @@
 <script>
     /* ===== TYPED JS ===== */
     new Typed('#auto-input', {
-        strings: ['Software Developer!', 'Web Developer!', 'Software Engineer!', 'Python Developer!', 'Django Developer!', 'React Developer!', 'Full Stack Developer!', 'Data Operator!', 'Web Designer!', 'Backend Developer!', 'Frontend Developer!'],
+        strings: ['Python Developer!', 'Django Developer!', 'React Developer!', 'Full Stack Developer!', 'Software Developer!', 'Web Designer!', 'Backend Developer!', 'Frontend Developer!'],
         typeSpeed: 75,
         backSpeed: 55,
         backDelay: 1400,
@@ -2168,7 +2292,88 @@
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    /* ===== SKILL ANIMATION (ring + bar) ===== */
+    /* ===== IMAGE ARC CANVAS ===== */
+    (function() {
+        const c = document.getElementById('img-arc-canvas');
+        if (!c) return;
+        const ctx = c.getContext('2d');
+        const W = c.width, H = c.height;
+        const cx = W / 2, cy = H / 2;
+        const R = cx - 4;
+        let angle = 0;
+
+        const colors = ['#6c63ff','#00d4ff','#ff6b6b','#a78bfa','#6c63ff'];
+
+        function draw() {
+            ctx.clearRect(0, 0, W, H);
+
+            // Multi-layer glowing arc
+            for (let layer = 0; layer < 3; layer++) {
+                const blur = [0, 6, 12][layer];
+                const alpha = [1, 0.4, 0.2][layer];
+                const lineW = [3, 6, 10][layer];
+
+                ctx.save();
+                ctx.translate(cx, cy);
+                ctx.rotate(angle + layer * 0.3);
+                ctx.translate(-cx, -cy);
+
+                const grad = ctx.createConicGradient(0, cx, cy);
+                colors.forEach((c, i) => grad.addColorStop(i / (colors.length - 1), c));
+
+                ctx.shadowBlur = blur;
+                ctx.shadowColor = '#6c63ff';
+                ctx.globalAlpha = alpha;
+                ctx.beginPath();
+                ctx.arc(cx, cy, R, 0, Math.PI * 2);
+                ctx.strokeStyle = grad;
+                ctx.lineWidth = lineW;
+                ctx.stroke();
+                ctx.restore();
+            }
+
+            // White comet dot
+            ctx.save();
+            const dotAngle = angle;
+            const dx = cx + R * Math.cos(dotAngle);
+            const dy = cy + R * Math.sin(dotAngle);
+            const g = ctx.createRadialGradient(dx, dy, 0, dx, dy, 12);
+            g.addColorStop(0, 'rgba(255,255,255,1)');
+            g.addColorStop(0.4, 'rgba(108,99,255,0.6)');
+            g.addColorStop(1, 'transparent');
+            ctx.beginPath();
+            ctx.arc(dx, dy, 8, 0, Math.PI * 2);
+            ctx.fillStyle = g;
+            ctx.fill();
+            ctx.restore();
+
+            angle += 0.018;
+            requestAnimationFrame(draw);
+        }
+        draw();
+    })();
+
+    /* ===== 3D MOUSE TILT ===== */
+    (function() {
+        const wrap = document.getElementById('heroImgWrap');
+        const card = document.getElementById('tiltCard');
+        if (!wrap || !card) return;
+
+        wrap.addEventListener('mousemove', e => {
+            const rect = wrap.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top  - rect.height / 2;
+            const rotX = (-y / rect.height * 22).toFixed(2);
+            const rotY = ( x / rect.width  * 22).toFixed(2);
+            card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.02)`;
+            card.style.transition = 'transform 0.05s ease';
+        });
+
+        wrap.addEventListener('mouseleave', () => {
+            card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+            card.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+        });
+    })();
     const skillCards = document.querySelectorAll('.skill-card');
     const skillObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
