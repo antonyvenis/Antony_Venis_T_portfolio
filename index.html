@@ -291,22 +291,21 @@
             display: grid;
             grid-template-columns: 1fr auto;
             align-items: center;
-            gap: 70px;
+            gap: 50px;
             width: 100%;
             position: relative;
             z-index: 1;
         }
 
-        .home-content { max-width: 600px; }
+        .home-content { max-width: 580px; }
 
-        /* ---- HERO IMAGE AREA ---- */
         /* ══════════════════════════════════════════
            HOME IMAGE — CINEMATIC PREMIUM v4
         ══════════════════════════════════════════ */
         .home-img-wrap {
             position: relative;
-            width: 380px;
-            height: 460px;
+            width: 480px;       /* wider to fit badges without overflow */
+            height: 520px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
@@ -317,8 +316,8 @@
         /* 3D tilt card that wraps the photo */
         .img-tilt-card {
             position: relative;
-            width: 320px;
-            height: 380px;
+            width: 300px;       /* card fixed width */
+            height: 400px;
             border-radius: 28px;
             display: flex;
             align-items: center;
@@ -330,7 +329,6 @@
             transition: transform 0.1s ease;
             z-index: 2;
 
-            /* Glassmorphism */
             background: rgba(255,255,255,0.03);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(108,99,255,0.2);
@@ -391,7 +389,7 @@
         /* Photo circle inside card */
         .img-photo-circle {
             position: relative;
-            width: 210px; height: 210px;
+            width: 230px; height: 230px;
             border-radius: 50%;
             flex-shrink: 0;
         }
@@ -425,7 +423,7 @@
         }
 
         .img-photo-circle img {
-            width: 210px; height: 210px;
+            width: 230px; height: 230px;
             border-radius: 50%;
             object-fit: cover;
             object-position: top center;
@@ -442,7 +440,7 @@
 
         /* Name + title inside card */
         .img-card-info {
-            margin-top: 18px;
+            margin-top: 16px;
             text-align: center;
             position: relative;
             z-index: 2;
@@ -504,14 +502,14 @@
             gap: 4px;
         }
 
-        /* Floating badges OUTSIDE card */
+        /* ── Floating badges — positioned within wrap boundary ── */
         .home-float-badge {
             position: absolute;
             background: rgba(10,15,30,0.88);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(108,99,255,0.3);
             border-radius: 16px;
-            padding: 12px 18px;
+            padding: 10px 16px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -524,29 +522,31 @@
                 0 8px 30px rgba(0,0,0,0.45),
                 inset 0 1px 0 rgba(255,255,255,0.06);
         }
+        /* badge-1: top-left of wrap */
         .home-float-badge.badge-1 {
-            top: 20px; left: -10px;
+            top: 30px; left: 0px;
             animation: badgeFloat1 4s ease-in-out infinite;
         }
+        /* badge-2: right side, middle */
         .home-float-badge.badge-2 {
-            top: 130px; right: -20px;
+            top: 50%; right: 0px;
+            transform: translateY(-80px);
             animation: badgeFloat2 4s ease-in-out infinite;
             animation-delay: 1.3s;
         }
+        /* badge-3: bottom-left */
         .home-float-badge.badge-3 {
-            top: 250px; left: -20px;
+            bottom: 50px; left: 0px;
             animation: badgeFloat1 4s ease-in-out infinite;
             animation-delay: 2.5s;
         }
         @keyframes badgeFloat1 {
             0%,100% { transform: translateX(0) translateY(0); }
-            33%      { transform: translateX(-5px) translateY(-6px); }
-            66%      { transform: translateX(3px) translateY(-3px); }
+            50%      { transform: translateX(0) translateY(-8px); }
         }
         @keyframes badgeFloat2 {
-            0%,100% { transform: translateX(0) translateY(0); }
-            33%      { transform: translateX(5px) translateY(-8px); }
-            66%      { transform: translateX(-3px) translateY(-4px); }
+            0%,100% { transform: translateY(-80px) translateX(0); }
+            50%      { transform: translateY(-88px) translateX(0); }
         }
         .home-float-badge .dot {
             width: 9px; height: 9px;
@@ -601,17 +601,17 @@
 
             .img-tilt-card {
                 width: 100%;
-                max-width: 300px;
+                max-width: 310px;
                 height: auto;
-                padding: 24px 20px 100px;
+                padding: 24px 20px 110px;
                 border-radius: 24px;
                 transform: none !important;
             }
 
             .img-photo-circle,
             .img-photo-circle img {
-                width: 160px;
-                height: 160px;
+                width: 210px;
+                height: 210px;
             }
 
             /* Hide absolute floating badges on mobile */
@@ -667,8 +667,8 @@
         }
 
         @media (max-width: 400px) {
-            .img-tilt-card { max-width: 260px; }
-            .img-photo-circle, .img-photo-circle img { width: 130px; height: 130px; }
+            .img-tilt-card { max-width: 270px; }
+            .img-photo-circle, .img-photo-circle img { width: 170px; height: 170px; }
         }
 
         /* Greeting line */
@@ -1559,7 +1559,7 @@
                 <div class="img-tilt-card" id="tiltCard">
                     <div class="img-photo-circle">
                         <canvas id="img-arc-canvas" width="234" height="234"></canvas>
-                        <img src="./images/antonyprofile2.png" loading="lazy" alt="Antony Venis T">
+                        <img src="./images/antonyhomeimg2.png" loading="lazy" alt="Antony Venis T">
                     </div>
                     <div class="img-card-info">
                         <h3>Antony Venis T</h3>
@@ -1577,7 +1577,7 @@
                 <!-- Mobile-only badge row (shown below card on small screens) -->
                 <div class="mobile-badge-row" style="display:none;">
                     <div class="m-badge"><span class="m-dot"></span> Open to Work</div>
-                    <div class="m-badge">🐍 Python · Django</div>
+                    <div class="m-badge">💻 Python · Django</div>
                     <div class="m-badge">⚛️ React · JS</div>
                 </div>
 
