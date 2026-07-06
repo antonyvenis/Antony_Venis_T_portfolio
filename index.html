@@ -513,7 +513,7 @@
         /* ── Floating badges — positioned within wrap boundary ── */
         .home-float-badge {
             position: absolute;
-            background: rgba(10,15,30,0.88);
+            background: rgba(10,15,30,0.92);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(108,99,255,0.3);
             border-radius: 16px;
@@ -530,31 +530,42 @@
                 0 8px 30px rgba(0,0,0,0.45),
                 inset 0 1px 0 rgba(255,255,255,0.06);
         }
-        /* badge-1: top-left of wrap */
+        /* badge-1: top — above card, centered */
         .home-float-badge.badge-1 {
-            top: 30px; left: 0px;
-            animation: badgeFloat1 4s ease-in-out infinite;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: badgeFloatUp 4s ease-in-out infinite;
+            border-color: rgba(108,99,255,0.45);
+            background: rgba(10,15,30,0.95);
         }
-        /* badge-2: right side, middle */
+        /* badge-2: left side, middle */
         .home-float-badge.badge-2 {
-            top: 50%; right: 0px;
-            transform: translateY(-80px);
-            animation: badgeFloat2 4s ease-in-out infinite;
+            top: 50%;
+            left: -10px;
+            transform: translateY(-60px);
+            animation: badgeFloatLeft 4s ease-in-out infinite;
             animation-delay: 1.3s;
         }
-        /* badge-3: bottom-left */
+        /* badge-3: right side, lower */
         .home-float-badge.badge-3 {
-            bottom: 50px; left: 0px;
-            animation: badgeFloat1 4s ease-in-out infinite;
+            top: 50%;
+            right: -10px;
+            transform: translateY(40px);
+            animation: badgeFloatRight 4s ease-in-out infinite;
             animation-delay: 2.5s;
         }
-        @keyframes badgeFloat1 {
-            0%,100% { transform: translateX(0) translateY(0); }
-            50%      { transform: translateX(0) translateY(-8px); }
+        @keyframes badgeFloatUp {
+            0%,100% { transform: translateX(-50%) translateY(0); }
+            50%      { transform: translateX(-50%) translateY(-8px); }
         }
-        @keyframes badgeFloat2 {
-            0%,100% { transform: translateY(-80px) translateX(0); }
-            50%      { transform: translateY(-88px) translateX(0); }
+        @keyframes badgeFloatLeft {
+            0%,100% { transform: translateY(-60px) translateX(0); }
+            50%      { transform: translateY(-60px) translateX(-6px); }
+        }
+        @keyframes badgeFloatRight {
+            0%,100% { transform: translateY(40px) translateX(0); }
+            50%      { transform: translateY(40px) translateX(6px); }
         }
         .home-float-badge .dot {
             width: 9px; height: 9px;
@@ -562,6 +573,7 @@
             background: #22c55e;
             box-shadow: 0 0 8px #22c55e;
             flex-shrink: 0;
+            animation: statusBlink 2s ease-in-out infinite;
         }
         .home-float-badge .badge-icon {
             width: 30px; height: 30px;
@@ -572,8 +584,9 @@
         }
         .home-float-badge .badge-icon.purple { background: rgba(108,99,255,0.2); }
         .home-float-badge .badge-icon.cyan   { background: rgba(0,212,255,0.15); }
-        .home-float-badge .badge-text { display: flex; flex-direction: column; gap: 1px; }
-        .home-float-badge .badge-text .bt { font-size: 0.78rem; font-weight: 700; color: var(--text); }
+        .home-float-badge .badge-icon.green  { background: rgba(34,197,94,0.15); }
+        .home-float-badge .badge-text { display: flex; flex-direction: column; gap: 2px; }
+        .home-float-badge .badge-text .bt { font-size: 0.8rem; font-weight: 700; color: var(--text); }
         .home-float-badge .badge-text .bs { font-size: 0.68rem; color: var(--text-muted); font-weight: 400; }
 
         /* Responsive */
@@ -1510,7 +1523,7 @@
                 </p>
 
                 <div class="btn-group">
-                    <a href="Antony_Venis_T_Resume.pdf" download class="btn-primary">
+                    <a href="Antony_Venis_T_Professional_Resume.pdf" download class="btn-primary">
                         <i class="fa-solid fa-download"></i> Download Resume
                     </a>
                     <a href="#contact" class="btn-outline">
@@ -1542,10 +1555,11 @@
             <div class="home-img-wrap" id="heroImgWrap">
 
                 <!-- Floating badges (desktop only) -->
+                <!-- Floating badges (desktop only) -->
                 <div class="home-float-badge badge-1">
                     <span class="dot"></span>
                     <div class="badge-text">
-                        <span class="bt">Available To Hire 🚀</span>
+                        <span class="bt">Available to Hire 🚀</span>
                         <span class="bs">Open to Work · Chennai</span>
                     </div>
                 </div>
@@ -1557,7 +1571,7 @@
                     </div>
                 </div>
                 <div class="home-float-badge badge-3">
-                    <span class="badge-icon cyan">⚛️</span>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="26" height="26" alt="React" style="border-radius:7px;background:rgba(97,218,251,0.15);padding:4px;flex-shrink:0;">
                     <div class="badge-text">
                         <span class="bt">React · JS</span>
                         <span class="bs">Frontend Dev</span>
@@ -1592,7 +1606,7 @@
 
                 <!-- Mobile-only badge row (shown below card on small screens) -->
                 <div class="mobile-badge-row" style="display:none;">
-                    <div class="m-badge"><span class="m-dot"></span> Available To Hire 🚀</div>
+                    <div class="m-badge"><span class="m-dot"></span> Available to Hire 🚀</div>
                     <div class="m-badge">💻 Python · Django</div>
                     <div class="m-badge">⚛️ React · JS</div>
                 </div>
