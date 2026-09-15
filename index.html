@@ -1217,6 +1217,196 @@
             font-weight: 500;
         }
 
+        /* ===== CERTIFICATION SECTION ===== */
+        #certification { background: var(--primary); }
+
+        .cert-showcase { margin-top: 50px; }
+
+        .cert-card {
+            position: relative;
+            border-radius: 22px;
+            transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s;
+        }
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 24px;
+            background: conic-gradient(from 0deg, #fbbf24, #6c63ff, #00d4ff, #fbbf24);
+            z-index: 0;
+            opacity: 0.35;
+            animation: certBorderSpin 7s linear infinite;
+        }
+        @keyframes certBorderSpin { to { filter: hue-rotate(360deg); } }
+        .cert-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 60px rgba(251,191,36,0.14), var(--glow);
+        }
+        .cert-card:hover::before { opacity: 0.65; }
+
+        .cert-card-inner {
+            position: relative;
+            z-index: 1;
+            margin: 2px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            overflow: hidden;
+        }
+
+        .cert-ribbon {
+            position: absolute;
+            top: 18px; right: 18px;
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            display: flex; align-items: center; justify-content: center;
+            color: #1a1200;
+            font-size: 1.15rem;
+            z-index: 3;
+            box-shadow: 0 4px 18px rgba(251,191,36,0.4);
+        }
+
+        .cert-image-wrap {
+            position: relative;
+            cursor: zoom-in;
+            overflow: hidden;
+            border-right: 1px solid var(--card-border);
+            min-height: 280px;
+            background: #0d1228;
+        }
+        .cert-image-wrap img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .cert-image-wrap:hover img { transform: scale(1.06); }
+        .cert-image-overlay {
+            position: absolute; inset: 0;
+            background: rgba(10,15,30,0.72);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+            opacity: 0; transition: opacity 0.3s;
+            color: #fff; font-weight: 600; font-size: 0.85rem; text-align: center;
+        }
+        .cert-image-overlay i { font-size: 1.6rem; color: var(--accent2); }
+        .cert-image-wrap:hover .cert-image-overlay { opacity: 1; }
+
+        .cert-details {
+            padding: 34px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .cert-verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            width: fit-content;
+            padding: 5px 14px;
+            background: rgba(34,197,94,0.12);
+            border: 1px solid rgba(34,197,94,0.35);
+            color: #4ade80;
+            font-size: 0.72rem;
+            font-weight: 700;
+            border-radius: 999px;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+        .cert-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .cert-issuer {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cert-issuer strong { color: var(--accent2); }
+
+        .cert-meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 6px 0 4px;
+            padding: 16px 18px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+        }
+        .cert-meta-item { display: flex; flex-direction: column; gap: 2px; }
+        .cert-meta-item .lbl {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        .cert-meta-item .val {
+            font-size: 0.86rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .cert-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+        }
+
+        .cert-actions {
+            display: flex;
+            gap: 14px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        /* Lightbox */
+        .cert-lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(5,8,16,0.94);
+            backdrop-filter: blur(8px);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            cursor: zoom-out;
+        }
+        .cert-lightbox.open { display: flex; }
+        .cert-lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            border: 2px solid rgba(251,191,36,0.4);
+        }
+        .cert-lightbox-close {
+            position: absolute;
+            top: 24px; right: 34px;
+            font-size: 2.4rem;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        @media (max-width: 900px) {
+            .cert-card-inner { grid-template-columns: 1fr; }
+            .cert-image-wrap { min-height: 220px; border-right: none; border-bottom: 1px solid var(--card-border); }
+            .cert-details { padding: 26px 22px; }
+        }
+        @media (max-width: 480px) {
+            .cert-meta-grid { grid-template-columns: 1fr; }
+            .cert-title { font-size: 1.2rem; }
+        }
+
         /* ===== PROJECTS SECTION ===== */
         #projects { background: var(--primary); }
 
@@ -1481,6 +1671,7 @@
             <li><a href="#about"><i class="fa-solid fa-circle-user"></i> About</a></li>
             <li><a href="#skill"><i class="fa-solid fa-code"></i> Skills</a></li>
             <li><a href="#education"><i class="fa-solid fa-graduation-cap"></i> Education</a></li>
+            <li><a href="#certification"><i class="fa-solid fa-certificate"></i> Certification</a></li>
             <li><a href="#projects"><i class="fa-solid fa-briefcase"></i> Projects</a></li>
             <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
         </ul>
@@ -2133,6 +2324,67 @@
         </div>
     </section>
 
+    <!-- CERTIFICATION -->
+    <section id="certification">
+        <span class="section-label">Verified Achievement</span>
+        <h2 class="section-title">My <span>Certification</span></h2>
+        <p class="section-desc">Industry-recognized proof of my full stack training — click the certificate to view it up close.</p>
+
+        <div class="cert-showcase reveal">
+            <div class="cert-card">
+                <div class="cert-card-inner">
+                    <div class="cert-ribbon"><i class="fa-solid fa-award"></i></div>
+
+                    <div class="cert-image-wrap" onclick="openCertLightbox()">
+                        <img src="my portfolio\antony_venis_portfolio\images\certificate-python-fullstack.jpeg" loading="lazy" alt="Python Full Stack Development Certificate - Code Pilot">
+                        <div class="cert-image-overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            <span>Click to view full certificate</span>
+                        </div>
+                    </div>
+
+                    <div class="cert-details">
+                        <span class="cert-verified-badge"><i class="fa-solid fa-circle-check"></i> Verified Certificate</span>
+                        <h3 class="cert-title">Python Full Stack Development</h3>
+                        <p class="cert-issuer"><i class="fa-solid fa-building-columns"></i> Issued by <strong>Code Pilot, Chennai</strong></p>
+
+                        <div class="cert-meta-grid">
+                            <div class="cert-meta-item">
+                                <span class="lbl">Course Duration</span>
+                                <span class="val">05 Dec 2025 &ndash; 10 Apr 2026</span>
+                            </div>
+                            <div class="cert-meta-item">
+                                <span class="lbl">Date of Issue</span>
+                                <span class="val">07 Sep 2026</span>
+                            </div>
+                            <div class="cert-meta-item">
+                                <span class="lbl">Credential Type</span>
+                                <span class="val">Certificate of Completion</span>
+                            </div>
+                            <div class="cert-meta-item">
+                                <span class="lbl">Status</span>
+                                <span class="val" style="color:#4ade80;">Completed ✔</span>
+                            </div>
+                        </div>
+
+                        <p class="cert-desc">
+                            Successfully completed the Python Full Stack Development program, demonstrating strong commitment to learning and gaining proficiency in essential full stack tools — Python, Django, DRF, React JS, PostgreSQL, REST APIs, Celery &amp; Redis, Git, and cloud deployment — clearing all stages of assessments and evaluations.
+                        </p>
+
+                        <div class="cert-actions">
+                            <a href="./images/certificate-python-fullstack.jpg" download class="btn-primary">
+                                <i class="fa-solid fa-download"></i> Download Certificate
+                            </a>
+                            <a href="#" onclick="openCertLightbox(); return false;" class="btn-outline">
+                                <i class="fa-solid fa-eye"></i> Preview
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- PROJECTS -->
     <section id="projects">
         <span class="section-label">My Work</span>
@@ -2280,6 +2532,12 @@
         <p>&copy; 2026 Antony Venis T &mdash; <a href="https://github.com/antonyvenis" target="_blank">github.com/antonyvenis</a> &mdash; Designed with ❤️ in Chennai</p>
     </div>
 
+</div>
+
+<!-- Certificate lightbox (full-screen preview) -->
+<div id="certLightbox" class="cert-lightbox" onclick="closeCertLightbox()">
+    <span class="cert-lightbox-close">&times;</span>
+    <img src="./images/certificate-python-fullstack.jpg" alt="Python Full Stack Development Certificate - Code Pilot">
 </div>
 
 <!-- Typed.js -->
@@ -2466,6 +2724,14 @@
     }, { threshold: 0.2 });
 
     skillCards.forEach(card => skillObserver.observe(card));
+
+    /* ===== CERTIFICATE LIGHTBOX ===== */
+    function openCertLightbox() {
+        document.getElementById('certLightbox').classList.add('open');
+    }
+    function closeCertLightbox() {
+        document.getElementById('certLightbox').classList.remove('open');
+    }
 </script>
 
 </body>
